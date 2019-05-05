@@ -26,7 +26,7 @@
         
     this is success page!
 
-    <a href="anotherpage">点我跳到另一个页面</a>
+    <a href="listStudent">点我跳到另一个页面</a>
 
     <form action="outLogin">
         <table>
