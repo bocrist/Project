@@ -1,15 +1,29 @@
 package cn.wmyskxz.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import cn.wmyskxz.entity.Student;
+import cn.wmyskxz.entity.User;
+import cn.wmyskxz.service.UserService;
+
 @Controller
 public class LoginController {
+	@Autowired
+    private UserService userService;
     @RequestMapping("/login")
     public String login(
             @RequestParam("username") String username,
@@ -49,5 +63,28 @@ public class LoginController {
 		Subject subject = SecurityUtils.getSubject(); 
 	    subject.logout();
 	    return "index";
-}
+     }
+	
+    @RequestMapping("/regist")
+    public String regist(){
+        return "regist";
+    }
+    
+
+    
+    @RequestMapping("/doRegist")
+    public String addUser(HttpServletRequest request, HttpServletResponse response) {
+
+        User user = new User();
+        
+        String username = request.getParameter("username");
+        String userpasswd = request.getParameter("userpasswd");   
+        user.setUserName(username);
+        user.setUserPasswd(userpasswd);
+
+
+        userService.addUser(user);
+
+        return "index";
+    }
 }
