@@ -22,6 +22,11 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
+    
+    @RequestMapping("/add")
+    public String regist(){
+        return "addStudent";
+    }
 
     @RequestMapping("/addStudent")
     public String addStudent(HttpServletRequest request, HttpServletResponse response) {

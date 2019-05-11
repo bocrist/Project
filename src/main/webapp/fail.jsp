@@ -11,6 +11,13 @@
     <title>用户登录</title>
 </head>
 <body>
-        u are loser,this is a fail page!
+       请注册!
+      <form action="outLogin">
+        <table>
+            <tr>
+                <td><input type="submit" value="回首页"></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>

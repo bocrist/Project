@@ -27,20 +27,13 @@ public class LoginController {
             Model model) {
         String error = null;
         if (username != null && userpasswd != null) {
-        	/*
-        	@SuppressWarnings("deprecation")
-			Factory<org.apache.shiro.mgt.SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
-        	// 创建SecurityManager (根据配置创建SecurityManager实例)
-        	SecurityManager security = (SecurityManager) factory.getInstance();
-        	SecurityUtils.setSecurityManager((org.apache.shiro.mgt.SecurityManager) security);
-*/
             //初始化
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(username, userpasswd);
             try {
                 //登录，即身份校验，由通过Spring注入的UserRealm会自动校验输入的用户名和密码在数据库中是否有对应的值
                 subject.login(token);
-                return "success";
+                return "redirect:listStudent";
             }catch (Exception e){
                 e.printStackTrace();
                 error = "未知错误，错误信息：" + e.getMessage();

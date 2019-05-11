@@ -28,7 +28,7 @@
         <property name="filterChainDefinitions">
             <value>
                 <!-- 静态资源不拦截 -->
-                /** = anon
+                
                /regist.jsp=anon
 
                 <!-- 登录页面不拦截 -->
@@ -39,7 +39,9 @@
                 /logout = logout
 
                 <!-- user表示身份通过或通过记住我通过的用户都能访问系统 -->
-                /success.jsp = user
+                /listStudent = user
+                /add = user
+                /editStudent = user
 
                 <!-- `/**`表示所有请求，表示访问该地址的用户是身份验证通过或RememberMe登录的都可以 -->
             <!--     /** = user -->
