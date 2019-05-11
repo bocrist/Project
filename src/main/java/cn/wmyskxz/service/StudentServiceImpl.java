@@ -26,10 +26,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     public void updateStudent(Student student) {
+    	System.out.println("sadasd5");
         studentDao.updateStudent(student);
     }
 
     public Student getStudent(int id) {
+    	System.out.println("sadasd6");
         return studentDao.getStudent(id);
     }
 

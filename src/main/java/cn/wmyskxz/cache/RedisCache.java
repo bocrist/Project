@@ -62,8 +62,10 @@ public class RedisCache implements Cache {
         // TODO 从缓存中读数据，用读锁锁定，不允许写
         logger.info("从缓存cacheId="+cacheId+"中拿数据key="+key+"对应的value");
         if (ConfigUtils.redisSwitch) {
+        	System.out.println("sadasd8");
             read.lock();
             try {
+            	System.out.println("sadasd9");
                 return JedisUtils.get(cacheId, key);
             } finally {
                 read.unlock();
@@ -75,7 +77,7 @@ public class RedisCache implements Cache {
     @Override
     public Object removeObject(Object key) {
         // TODO 从缓存中改动数据，用写锁锁定，不允许读，改动结束后释放写锁。
-        logger.info("NTSRedisCache clear =" + cacheId);
+        logger.info("NTSRedisCache clear1 =" + cacheId);
         if (ConfigUtils.redisSwitch) {
             write.lock();
             try {
@@ -90,7 +92,7 @@ public class RedisCache implements Cache {
     @Override
     public void clear() {
         // TODO  从缓存中改动数据，用写锁锁定，不允许读，改动结束后释放写锁。
-        logger.info("NTSRedisCache clear =" + cacheId);
+        logger.info("NTSRedisCache clear2 =" + cacheId);
         if (ConfigUtils.redisSwitch) {
             write.lock();
             try {
@@ -104,7 +106,7 @@ public class RedisCache implements Cache {
     @Override
     public int getSize() {
         // TODO Auto-generated method stub
-        logger.info("NTSRedisCache clear =" + cacheId);
+        logger.info("NTSRedisCache clear3 =" + cacheId);
         if (ConfigUtils.redisSwitch) {
             read.lock();
             try {

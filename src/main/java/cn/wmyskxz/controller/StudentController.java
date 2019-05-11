@@ -33,7 +33,7 @@ public class StudentController {
         int age = Integer.parseInt(request.getParameter("age"));
         String sex = request.getParameter("sex");
         Date birthday = null;
-        // String ÀàÐÍ°´ÕÕ yyyy-MM-dd µÄ¸ñÊ½×ª»»Îª java.util.Date Àà
+        // String ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½ yyyy-MM-dd ï¿½Ä¸ï¿½Ê½×ªï¿½ï¿½Îª java.util.Date ï¿½ï¿½
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             birthday = simpleDateFormat.parse(request.getParameter("birthday"));
@@ -55,7 +55,7 @@ public class StudentController {
     @RequestMapping("/listStudent")
     public String listStudent(HttpServletRequest request, HttpServletResponse response) {
 
-        // »ñÈ¡·ÖÒ³²ÎÊý
+        // ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
         int start = 0;
         int count = 10;
 
@@ -86,8 +86,11 @@ public class StudentController {
     @RequestMapping("/editStudent")
     public ModelAndView editStudent(int id) {
         ModelAndView mav = new ModelAndView("editStudent");
+        System.out.println("sadasd0");
         Student student = studentService.getStudent(id);
+        System.out.println("sadasd1");
         mav.addObject("student", student);
+        System.out.println("sadasd2");
         return mav;
     }
 

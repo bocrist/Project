@@ -1,12 +1,13 @@
 package cn.wmyskxz.util;
 
-import org.mybatis.caches.redis.SerializeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
+
+import cn.wmyskxz.util.SerializeUtil;;
 
 public class JedisUtils {
     private static Logger logger=LoggerFactory.getLogger(JedisUtils.class);
@@ -15,16 +16,20 @@ public class JedisUtils {
 
     public static void getInstence(){
         if(JEDISPOOL == null){
+        	System.out.println("sadasd12");
             logger.info("JeidsUtils getInstence...");
+            System.out.println("sadasd13");
             try {
                 JedisPoolConfig conf=new JedisPoolConfig();
                 conf.setMaxIdle(ConfigUtils.maxIdle);
                 conf.setTestOnBorrow(ConfigUtils.testOnBorrow);
                 //当配置中配置有password时，则创建带密码的缓存池
                 if(ConfigUtils.password !=null && !"".equals(ConfigUtils.password)){
+                	System.out.println("sadasd14");
                     JEDISPOOL=new JedisPool(conf,ConfigUtils.ip,ConfigUtils.port,ConfigUtils.timeout,ConfigUtils.password);
                 }else{
                 //没有配置则用无密码的缓存池。
+                	System.out.println("sadasd15");
                     JEDISPOOL=new JedisPool(conf,ConfigUtils.ip,ConfigUtils.port,ConfigUtils.timeout);
                 }
             } catch (Exception e) {
@@ -35,15 +40,19 @@ public class JedisUtils {
 
     public static Jedis getJedis(){
         try {
-            return JEDISPOOL.getResource();
+        	System.out.println("sadasd11");
+        	Jedis jedis = null;
+        	jedis = JEDISPOOL.getResource();
+            return jedis;
         } catch (Exception e) {
+        	System.out.println("sadasd20");
             return null;
         }
     }
 
     public static void closeJedis(Jedis jedis){
         if(jedis !=null){
-            jedis.quit();
+            jedis.close();
         }
     }
 
@@ -69,9 +78,12 @@ public class JedisUtils {
 
 
     public static Object get(String id,Object key){
+    	System.out.println("sadasd10");
         Jedis jedis=getJedis();
+        System.out.println("sadasd7");
         try {
-            Object object = SerializeUtil.unserialize(jedis.hget(SerializeUtil.serialize(id), SerializeUtil.serialize(key)));
+        	System.out.println("sadasd18");
+            Object object = SerializeUtil.deserialize(jedis.hget(SerializeUtil.serialize(id), SerializeUtil.serialize(key)));
             logger.info("redis get ... key=["+key+"],value=["+object+"]");
             ConfigUtils.setSucc();
             return object;

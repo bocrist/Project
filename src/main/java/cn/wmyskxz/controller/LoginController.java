@@ -1,8 +1,5 @@
 package cn.wmyskxz.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import cn.wmyskxz.entity.Student;
 import cn.wmyskxz.entity.User;
 import cn.wmyskxz.service.UserService;
 
