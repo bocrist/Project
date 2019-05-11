@@ -37,18 +37,9 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-        </plugins>
-        
- 
-        
-        
+        </plugins> 
     </build>
     
-    
-
-	
-
-
     <properties>
         <!-- 设置项目编码编码 -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -207,6 +198,14 @@
         <artifactId>commons-collections</artifactId>
         <version>3.2.1</version>
     </dependency>
+    
+           <!-- 引入redis依赖 -->
+        <dependency>
+            <groupId>org.mybatis.caches</groupId>
+            <artifactId>mybatis-redis</artifactId>
+            <version>1.0.0-beta2</version>
+        </dependency>
+
     
     </dependencies>    
 </project>

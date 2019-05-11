@@ -1,15 +1,17 @@
 package cn.wmyskxz.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Student {
-
-    private int id;
+public class Student implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private int id;
     private int studentid;
     private String name;
     private int age;
     private String sex;
     private Date birthday;
+
 
     public int getId() {
         return id;
