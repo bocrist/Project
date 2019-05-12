@@ -4,6 +4,7 @@
 
 <!-- 将namespace的值设置为DAO类对应的路径 -->
 <mapper namespace="cn.wmyskxz.dao.StudentDao">
+
     <!-- 查询数据条目 -->
      <select id="getTotal" resultType="int">
         SELECT COUNT(*) FROM student
@@ -25,5 +26,7 @@
     where rownum<=(#{param1}+#{param2})) where rn>(#{param1})]]>
     </select>
     
+    
+
    
 </mapper>

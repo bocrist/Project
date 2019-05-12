@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 
+<%-- 引入JQ和Bootstrap --%>
+    <link href="css/style.css" rel="stylesheet">
 
 <html>
 <head>
@@ -25,6 +27,12 @@
 <div>
         <strong> welcome,<shiro:principal/> </strong>
     </div>
+  <div>  
+    <form action="findname" method="post">
+<input type="text" name="search" placeholder="根据姓名查询" style="    border: 1px solid #E6E6E6;;height:18px;width:120px;">
+<button class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i> 搜索</button>
+</form>
+ </div>
 
 <div class="listDIV">
     <table class="table table-striped table-bordered table-hover table-condensed">

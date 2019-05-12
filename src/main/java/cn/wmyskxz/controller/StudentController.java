@@ -128,4 +128,22 @@ public class StudentController {
         studentService.updateStudent(student);
         return "redirect:listStudent";
     }
+    
+    @RequestMapping("/findname")
+    public  String findname(HttpServletRequest request, HttpServletResponse response) {
+
+    	 String name=request.getParameter("search");
+         System.out.println(name);
+         
+       
+      
+        List<Student> students=studentService.findname(name);
+        
+      
+    
+        request.setAttribute("students", students);
+      
+        return "findStudent";
+    }
+    
 }

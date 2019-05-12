@@ -30,6 +30,7 @@
                 <!-- 静态资源不拦截 -->
                 
                /regist.jsp=anon
+              
 
                 <!-- 登录页面不拦截 -->
                 /index.jsp = anon
@@ -42,6 +43,7 @@
                 /listStudent = user
                 /add = user
                 /editStudent = user
+                /findStudent = user
 
                 <!-- `/**`表示所有请求，表示访问该地址的用户是身份验证通过或RememberMe登录的都可以 -->
             <!--     /** = user -->

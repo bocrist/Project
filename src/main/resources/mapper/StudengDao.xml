@@ -5,7 +5,7 @@
 <!-- 将namespace的值设置为DAO类对应的路径 -->
 <mapper namespace="cn.wmyskxz.dao.StudentDao">
 <!-- 引入自定义缓存类实现cache接口 -->
-    <cache type="cn.wmyskxz.cache.RedisCache"/>
+    <cache type="cn.wmyskxz.cache.RedisCache"/> 
 
     <!-- 查询数据条目 -->
  <!--    <select id="getTotal" resultType="int">
@@ -32,6 +32,22 @@
     <select id="getStudent" resultMap="student" parameterType="int">
         SELECT * FROM student WHERE id = #{id}
     </select>
+    
+     <select id="findname" resultMap="student" >
+SELECT * FROM student where name like  '%'||#{name}||'%'  
+</select>
+    
+ <!--   
+    <select id="findname"  >
+        SELECT * FROM student
+        <where>
+            <if test="_parameter != null and _parameter != ''">
+                AND name LIKE CONCAT(CONCAT('%'#{name}'%'))
+            </if>
+        </where>
+        ORDER BY id
+    </select>
+-->
 <!--
     <resultMap id="student" type="student">
         <id column="id" property="id"/>

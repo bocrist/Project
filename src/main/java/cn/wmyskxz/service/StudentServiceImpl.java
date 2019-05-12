@@ -34,6 +34,10 @@ public class StudentServiceImpl implements StudentService {
     	System.out.println("sadasd6");
         return studentDao.getStudent(id);
     }
+    
+    public List<Student> findname(String name){
+        return studentDao.findname(name);
+    }
 
     public List<Student> list(int start, int count) {
         return studentDao.list(start, count);

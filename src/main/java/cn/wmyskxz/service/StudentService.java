@@ -4,6 +4,8 @@ import cn.wmyskxz.entity.Student;
 
 import java.util.List;
 
+import org.springframework.data.repository.query.Param;
+
 public interface StudentService {
 
     /**
@@ -36,6 +38,13 @@ public interface StudentService {
      * @return
      */
     Student getStudent(int id);
+   
+    /**
+                  * 查询数据
+     * @param username
+     * @return
+     */
+   List<Student> findname(String name);
     
 
     /**
